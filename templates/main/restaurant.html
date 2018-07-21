@@ -6,19 +6,23 @@
   </head>
   <body>
 
-      Name: {{ restaurant.name }}<br>
+    {% for f,v in restaurant.get_data.items %}
+        <strong>{{ f }}</strong>: {{v}} <br>
+    {% endfor %}
+
+      <!-- Name: {{ restaurant.name }}<br>
       Address : {{ restaurant.address }}<br>
       Open Time: {{ restaurant.open_time }}<br>
       Close Time: {{ restaurant.close_time }}
 
-      Average Rating : {{ restaurant.get_rating }}
+      Average Rating : {{ restaurant.get_rating }} -->
 
       <h2> Reviews </h2>
       <ul>
 
 
-        {% for review in review_set.all %}
-        <li><a target="_blank" href="{% url 'review' id=review.pk %}"> {{ review.title }} - {{ review.get_stars }} </a> </li>
+        {% for review in restaurant.review_set.all %}
+        <li> <a href="#" onClick="window.open('{% url 'review' id=review.pk %}','newwindow',height=500,width=500,); return false;" > {{ review.title }} - {{ review.get_stars }} </a> </li>
 
         {% endfor %}
 

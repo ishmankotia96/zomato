@@ -9,6 +9,17 @@ class Restaurant(models.Model):
     open_time = models.TimeField()
     close_time = models.TimeField()
 
+
+    def get_data(self):
+        return {
+            'Name': self.name,
+            'Address': self.address,
+            'Open Time': self.open_time.strftime('%I:%M %p'),
+            'Close Time': self.close_time.strftime('%I:%M %p'),
+            'Average Rating': self.review_set.aggregate(models.Avg('rating'))['rating__avg'],
+    }
+
+
     def get_rating(self):
         return self.review_set.aggregate(Avg('rating'))['rating__avg']
 
