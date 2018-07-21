@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+  </head>
+  <body>
+<h1>Restaurants</h1>
+
+  <ul>
+
+  {% for restaurant in query_set %}
+
+        <li>
+            <a href="{% url 'restaurant' id=restaurant.pk %}"> {{ restaurant.name }} </a> ( Average Rating: {{ restaurant.get_rating }} ) 
+        </li>
+
+    {% endfor %}
+
+    </ul>
+
+
+  </body>
+</html>
