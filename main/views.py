@@ -36,6 +36,25 @@ def add_restaurant(request):
 
 def restaurant(request,id):
 
+    # print(request.GET)
+    #
+    # try:
+    #     r = request.GET['rating']
+    #     s = request.GET['sorting']
+    #     if(r==""):
+    #         r = 0
+    # except:
+    #     r = 0
+    #     s = "H2L"
+    #
+    # query_set = models.Restaurant.objects.all()
+    # query_set = query_set.annotate(average_rating = Avg('review__rating')).filter(average_rating__gte = r)
+    #
+    # if(s=="L2H"):
+    #     query_set=query_set.order_by('average_rating')
+    # else:
+    #     query_set=query_set.order_by('-average_rating')
+
     rest = get_object_or_404(models.Restaurant,pk=id)
     success = True
 
